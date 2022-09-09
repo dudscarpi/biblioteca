@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+  <main>
+<table mat-table [dataSource]="emprestimo" class="mat-elevation-z8">
+    <ng-container matColumnDef="idEmprestimo">
+      <th mat-header-cell *matHeaderCellDef>#</th>
+      <td mat-cell *matCellDef="let e">{{ e.idEmprestimo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataDevolucao">
+      <th mat-header-cell *matHeaderCellDef>Data de Devolucao</th>
+      <td mat-cell *matCellDef="let e">{{ e.dataDevolucao | date:'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef>Descricao</th>
+      <td mat-cell *matCellDef="let e">{{ e.descricao }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="statusEmprestimo">
+      <th mat-header-cell *matHeaderCellDef>Status Emprestimo</th>
+      <td mat-cell *matCellDef="let e">{{ e.statusEmprestimo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="leitores">
+        <th mat-header-cell *matHeaderCellDef>Leitor</th>
+        <td mat-cell *matCellDef="let e">{{ e.leitores.nome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="livros">
+        <th mat-header-cell *matHeaderCellDef>Livro</th>
+        <td mat-cell *matCellDef="let e">{{ e.livros.titulo }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+      <tr mat-row *matRowDef="let row; columns: colunas"></tr>
+  </table>
+</main>

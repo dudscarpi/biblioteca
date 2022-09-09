@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="loader" *ngIf="livros == undefined; else principal">
+  <p>{{ naoEncontrado == true ? 'Livro não encontrado' : 'Procurando Livro...' }}</p>
+  <mat-spinner mode="indeterminate" color="primary" *ngIf="naoEncontrado == false"></mat-spinner>
+</div>
+
+<ng-template #principal>
+<article>
+  <mat-card *ngFor="let obj of livros">
+    <mat-card-title>Livro: "{{ obj.titulo }}"</mat-card-title>
+    <div class="autor">
+      <img id="fotoAutor" mat-card-avatar src="/assets/no-profile.png">
+      <mat-card-subtitle>{{obj.autores.nome}}</mat-card-subtitle>
+    </div>
+    <div class="livro">
+      <img mat-card-image id="infoLivro" src="https://picsum.photos/200">
+      <mat-card-content id="infoLivro">{{obj.resumo}}</mat-card-content>
+      </div>
+    <button mat-raised-button mat-button (click)="openDialog()">
+      Ver o Livro
+    </button>
+    <mat-card-footer>{{obj.status | lowercase}}</mat-card-footer>
+  </mat-card>
+
+</article>
+</ng-template>
+
+
+<footer>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" color="accent">
+</mat-paginator>
+</footer>

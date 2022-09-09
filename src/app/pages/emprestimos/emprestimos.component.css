@@ -1,0 +1,9 @@
+
+main{
+    display: flex;
+    padding-top: 25px;
+    justify-content: center;
+}
+table {
+    width: 90%;
+  }

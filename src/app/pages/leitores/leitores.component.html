@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<main>
+    <table mat-table [dataSource]="leitores" class="mat-elevation-z8">
+        <ng-container matColumnDef="idLeitor">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let l">{{ l.idLeitor }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef>Nome</th>
+          <td mat-cell *matCellDef="let l">{{ l.nome }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>E-mail</th>
+          <td mat-cell *matCellDef="let l">{{ l.email }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="statusLeitor">
+          <th mat-header-cell *matHeaderCellDef>Status Leitor</th>
+          <td mat-cell *matCellDef="let l">{{ l.statusLeitor }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="livros">
+            <th mat-header-cell *matHeaderCellDef>Livro</th>
+            <td mat-cell *matCellDef="let l">{{ l.livros.titulo }}</td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+          <tr mat-row *matRowDef="let row; columns: colunas"></tr>
+      </table>
+    </main>
